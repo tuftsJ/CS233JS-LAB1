@@ -1,0 +1,30 @@
+
+        /* Custom Styling for Vintage Green Digital Clock */
+        .h1 {
+            background-color: black;
+            color: #00ff00; /* Neon Green */
+            font-family: 'Courier New', Courier, monospace; /* Digital-like font */
+            font-size: 48px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            max-width: 400px;
+            margin: 50px auto;
+        }
+
+        .btn {
+            background-color: #00ff00;
+            color: black;
+            border: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .btn:hover {
+            background-color: #00cc00;
+        }
+
