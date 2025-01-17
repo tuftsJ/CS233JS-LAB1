@@ -64,6 +64,7 @@ function init()
 // shows the number of matches and tries in the status element on the page
 function showMatches() {
     // update the element on the page to display the variable matches and tries
+    document.getElementById("status").innerHTML = "Matches: " + matches + "Tries: " + tries;
 }
 
     // fills the array images with 10 pairs of card filenames
@@ -135,9 +136,9 @@ function enableAllRemainingCards() {
     // end for loop
     var cards = document.getElementsByName("card");
     for (var i = 0; i < cards.length; i++) {
-        if (cards.style.backgroundImage != 'none') {
-        cards[i].onclick = handleClick;
-        cards[i].style.cursor = 'pointer';
+        if (cards[i].style.backgroundImage != 'none') {
+            cards[i].onclick = handleClick;
+            cards[i].style.cursor = 'pointer';
         
         }
     }
@@ -150,7 +151,7 @@ function enableAllRemainingCards() {
 function showBack(index) {
     // create a variable card and set it equal to the ui element with an id of index
     // set the style.backgroundImage of card to the filename for the back of a card
-        var backImage = imagePath + 'black_back.jpg';
+        var backImage = imagePath + 'greenBack.jpg';
         var card = document.getElementById(index);
         card.style.backgroundImage = 'url(' + backImage + ')';
 }
@@ -162,8 +163,8 @@ function showAllBacks() {
         // call the function showBack for the current index
     // end for loop
     var cards = document.getElementsByName("card");
-    for (var i = 0; i < cards.length; i++) {
-        showBack(i);
+        for (var i = 0; i < cards.length; i++) {
+            showBack(i);
     }
 }
 // END PART 1 - TEST THIS FAR //
@@ -199,11 +200,9 @@ function handleClick() {
 
 // disable one card based on it's index
 function disableCard(index) {
-    if (secondPick == index) {
         var card = document.getElementById(index);
         card.onclick = () => {}; 
         card.style.cursor = 'none';
-    }
 }
 
 function doNothing(){
@@ -212,10 +211,11 @@ function doNothing(){
 
 // disable all of the cards
 
-function disableAllCards(index) {
-    var card = document.getElementById(index);
-        card.onclick = () => {}; 
-        card.style.cursor = 'none';
+function disableAllCards() {
+    var card = document.getElementsByName("card");
+        for (var i = 0; i < card.length; i++) {
+            disableCard(i);
+        }
     
 }
   
@@ -244,6 +244,7 @@ function checkCards() {
     firstPick = -1;
     secondPick = -1;
 
+
     // if the 2 cards match
     //      increment the number of matches
     //      remove the first(pick) card from the board
@@ -259,19 +260,26 @@ function checkCards() {
     // update the matches and tries on the page
     // reset the firstpick to -1
     // reset the secondpick to -1
+
 }
 
 // determines if the images in firstPick and secondPick are a matches
 // 2 cards are a match if they have the same value
 // cardvs.jpg is the pattern for card file names
 function isMatch() {
-    
+    if (images[firstPick].substr(4, 1) == images[secondPick].substr(4, 1)) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 // removes one card from the board based on it's index
 // set the backgroundImage to 'none' to remove the card
-function removeCard() {
-    
+function removeCard(i) {
+    var card = document.getElementById(i);
+    card.style.backgroundImage = 'none';
 }
 // END PART 3 - TEST THE ENTIRE APP //
 
